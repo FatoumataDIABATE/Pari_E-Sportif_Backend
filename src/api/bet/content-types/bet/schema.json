@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bets",
+  "info": {
+    "singularName": "bet",
+    "pluralName": "bets",
+    "displayName": "Bet"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "placed_at": {
+      "type": "datetime"
+    },
+    "etat": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "won",
+        "lost"
+      ]
+    },
+    "payout": {
+      "type": "decimal"
+    },
+    "bet_options": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bet-option.bet-option",
+      "mappedBy": "bet"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

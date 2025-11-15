@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bet_options",
+  "info": {
+    "singularName": "bet-option",
+    "pluralName": "bet-options",
+    "displayName": "BetOption"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "odds": {
+      "type": "decimal"
+    },
+    "match": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::match.match",
+      "inversedBy": "bet_options"
+    },
+    "bet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bet.bet",
+      "inversedBy": "bet_options"
+    }
+  }
+}

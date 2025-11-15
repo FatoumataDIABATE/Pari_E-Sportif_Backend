@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "matches",
+  "info": {
+    "singularName": "match",
+    "pluralName": "matches",
+    "displayName": "Match"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "etat": {
+      "type": "enumeration",
+      "enum": [
+        "a venir",
+        "en cours",
+        "terminé"
+      ]
+    },
+    "score_a": {
+      "type": "integer"
+    },
+    "score_b": {
+      "type": "integer"
+    },
+    "teamA": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::team.team"
+    },
+    "teamB": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::team.team"
+    },
+    "bet_options": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bet-option.bet-option",
+      "mappedBy": "match"
+    }
+  }
+}
