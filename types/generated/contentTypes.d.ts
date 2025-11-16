@@ -430,37 +430,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBetOptionBetOption extends Struct.CollectionTypeSchema {
-  collectionName: 'bet_options';
-  info: {
-    displayName: 'BetOption';
-    pluralName: 'bet-options';
-    singularName: 'bet-option';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    bet: Schema.Attribute.Relation<'manyToOne', 'api::bet.bet'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    label: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::bet-option.bet-option'
-    > &
-      Schema.Attribute.Private;
-    match: Schema.Attribute.Relation<'manyToOne', 'api::match.match'>;
-    odds: Schema.Attribute.Decimal;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBetBet extends Struct.CollectionTypeSchema {
   collectionName: 'bets';
   info: {
@@ -473,10 +442,7 @@ export interface ApiBetBet extends Struct.CollectionTypeSchema {
   };
   attributes: {
     amount: Schema.Attribute.Decimal;
-    bet_options: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::bet-option.bet-option'
-    >;
+    amount_final: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -484,8 +450,9 @@ export interface ApiBetBet extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::bet.bet'> &
       Schema.Attribute.Private;
-    payout: Schema.Attribute.Decimal;
+    match: Schema.Attribute.Relation<'manyToOne', 'api::match.match'>;
     placed_at: Schema.Attribute.DateTime;
+    pronostic: Schema.Attribute.Enumeration<['A', 'B', 'N']>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -508,24 +475,24 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bet_options: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::bet-option.bet-option'
-    >;
+    bets: Schema.Attribute.Relation<'oneToMany', 'api::bet.bet'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime;
-    etat: Schema.Attribute.Enumeration<['a venir', 'en cours', 'termin\u00E9']>;
+    etat: Schema.Attribute.Enumeration<['A_VENIR', 'EN_COURS', 'TERMINE']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::match.match'> &
       Schema.Attribute.Private;
+    odd_a: Schema.Attribute.Decimal;
+    odd_b: Schema.Attribute.Decimal;
+    odd_n: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    resultat: Schema.Attribute.Enumeration<['A', 'B', 'N']>;
     score_a: Schema.Attribute.Integer;
     score_b: Schema.Attribute.Integer;
     teamA: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
     teamB: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
-    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1069,7 +1036,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::bet-option.bet-option': ApiBetOptionBetOption;
       'api::bet.bet': ApiBetBet;
       'api::match.match': ApiMatchMatch;
       'api::team.team': ApiTeamTeam;

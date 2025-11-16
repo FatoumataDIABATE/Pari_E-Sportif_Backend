@@ -11,18 +11,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "date": {
       "type": "datetime"
     },
     "etat": {
       "type": "enumeration",
       "enum": [
-        "a venir",
-        "en cours",
-        "terminé"
+        "A_VENIR",
+        "EN_COURS",
+        "TERMINE"
       ]
     },
     "score_a": {
@@ -41,11 +38,28 @@
       "relation": "oneToOne",
       "target": "api::team.team"
     },
-    "bet_options": {
+    "odd_a": {
+      "type": "decimal"
+    },
+    "odd_b": {
+      "type": "decimal"
+    },
+    "odd_n": {
+      "type": "decimal"
+    },
+    "bets": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::bet-option.bet-option",
+      "target": "api::bet.bet",
       "mappedBy": "match"
+    },
+    "resultat": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "N"
+      ]
     }
   }
 }

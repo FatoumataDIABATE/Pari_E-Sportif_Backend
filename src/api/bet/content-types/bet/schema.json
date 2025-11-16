@@ -25,19 +25,27 @@
         "lost"
       ]
     },
-    "payout": {
-      "type": "decimal"
-    },
-    "bet_options": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::bet-option.bet-option",
-      "mappedBy": "bet"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "match": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::match.match",
+      "inversedBy": "bets"
+    },
+    "pronostic": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "N"
+      ]
+    },
+    "amount_final": {
+      "type": "decimal"
     }
   }
 }
