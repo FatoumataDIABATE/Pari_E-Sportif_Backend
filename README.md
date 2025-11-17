@@ -81,17 +81,17 @@ Une fois publié, les utilisateurs peuvent consulter les résultats des matchs e
 
 Il est possible de cloner ce projet et de l'exécuter sur votre espace local :
 
-1. Cloner le projet
+### Cloner le projet
 git clone [https://github.com/votre-utilisateur/nom-du-projet-backend.git](https://github.com/FatoumataDIABATE/Pari_E-Sportif_Backend.git)
 
 cd Pari_E-Sportif_Backend
 
-3. Installer les dépendances
+### Installer les dépendances
    
 npm install
 
 
-5. Configurer la base de données
+### Configurer la base de données
 
 Créez une base MySQL locale (ex. pari_esportif).
 
@@ -108,7 +108,7 @@ DB_USERNAME=votre_utilisateur
 DB_PASSWORD=votre_mot_de_passe
 
 
-4. Lancer le serveur Strapi
+### Lancer le serveur Strapi
 npm run develop
 
 
