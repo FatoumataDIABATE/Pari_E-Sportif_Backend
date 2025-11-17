@@ -75,3 +75,33 @@ Une fois publié, les utilisateurs peuvent consulter les résultats des matchs e
 
 <img width="657" height="666" alt="image" src="https://github.com/user-attachments/assets/82663a17-c947-48f8-8b1f-b45f9e464eb1" />
 
+
+
+Installation locale
+
+Il est possible de cloner ce projet et de l'exécuter sur votre espace local :
+
+1. Cloner le projet
+git clone [https://github.com/votre-utilisateur/nom-du-projet-backend.git](https://github.com/FatoumataDIABATE/Pari_E-Sportif_Backend.git)
+cd Pari_E-Sportif_Backend
+
+2. Installer les dépendances
+npm install
+
+3. Configurer la base de données
+
+Créez une base MySQL locale (ex. pari_esportif).
+
+Configurez vos identifiants dans le fichier .env :
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=pari_esportif
+DB_USERNAME=votre_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+
+4. Lancer le serveur Strapi
+npm run develop
+
+L'interface admin sera accessible sur http://localhost:1337/admin et vous pourrez gérer les équipes, les matchs et les paris en local.
+
