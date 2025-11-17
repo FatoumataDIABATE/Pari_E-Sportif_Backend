@@ -82,7 +82,7 @@ Une fois publié, les utilisateurs peuvent consulter les résultats des matchs e
 Il est possible de cloner ce projet et de l'exécuter sur votre espace local :
 
 ### Cloner le projet
-git clone [https://github.com/votre-utilisateur/nom-du-projet-backend.git](https://github.com/FatoumataDIABATE/Pari_E-Sportif_Backend.git)
+git clone https://github.com/FatoumataDIABATE/Pari_E-Sportif_Backend.git
 
 cd Pari_E-Sportif_Backend
 
