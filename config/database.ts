@@ -1,33 +1,17 @@
-import path from 'path';
-
-export default () => {
-    const client = 'mysql';
-
-    const connections = {
-        mysql: {
-            connection: {
-                host: '127.0.0.1',
-                port: 3306,
-                database: 'esport_betting',
-                user: 'root',
-                password: 'root1234',
-                ssl: false,
-            },
-            pool: { min: 2, max: 10 },
-        },
-        sqlite: {
-            connection: {
-                filename: path.join(__dirname, '..', '..', '.tmp/data.db'),
-            },
-            useNullAsDefault: true,
-        },
-    };
-
-    return {
+export default ({ env }) => ({
+    connection: {
+        client: 'postgres',
         connection: {
-            client,
-            ...connections[client],
-            acquireConnectionTimeout: 60000,
+            host: env('DATABASE_HOST'),
+            port: env.int('DATABASE_PORT', 5432),
+            database: env('DATABASE_NAME'),
+            user: env('DATABASE_USERNAME'),
+            password: env('DATABASE_PASSWORD'),
+            ssl: env.bool('DATABASE_SSL', true) && {
+                rejectUnauthorized: false,
+            },
         },
-    };
-};
+        pool: { min: 2, max: 10 },
+        acquireConnectionTimeout: 60000,
+    },
+});
