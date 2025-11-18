@@ -39,6 +39,11 @@ Découvrez l'interface utilisateur : https://pari-e-sportif-frontend-vqvv.vercel
 * Les utilisateurs peuvent visualiser les différents matchs
 * Pour placer un pari, l'utilisateur doit être connecté
 
+### Données utilisateurs de test : 
+email : test@test.com
+mdp : test
+
+
 ### Placement d'un pari (cas pratique)
 
 1. L'utilisateur connecté sélectionne un match et accède à la page de pari pour effectuer son pari.
@@ -74,6 +79,11 @@ Une fois publié, les utilisateurs peuvent consulter les résultats des matchs e
 
 
 <img width="657" height="666" alt="image" src="https://github.com/user-attachments/assets/82663a17-c947-48f8-8b1f-b45f9e464eb1" />
+
+
+
+Si les gains et pertes de l'utilisateur ne s'affichent pas, vous pouvez retourner sur l'interace admin, et sélectionner la table "Bet".
+Ensuite, selectionner le pari et cliquer sur "Publish".
 
 
 
