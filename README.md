@@ -40,8 +40,8 @@ Découvrez l'interface utilisateur : https://pari-e-sportif-frontend-vqvv.vercel
 * Pour placer un pari, l'utilisateur doit être connecté
 
 ### Données utilisateurs de test : 
-email : test@test.com
-mdp : test
+* email : test@test.com
+* mdp : test
 
 
 ### Placement d'un pari (cas pratique)
